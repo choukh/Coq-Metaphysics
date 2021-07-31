@@ -113,7 +113,7 @@ Fact 存在量词嵌入 {A : Type} : ∀ P : 性质 A,
   (∃ x, ⌜ P x ⌝) → ⌜ ∃ x, P x ⌝.
 Proof. firstorder. Qed.
 
-Fact 可能三段论 : ⌜ ∀ P Q, ◇ P → □ (P → Q) → ◇ Q ⌝.
+Fact 可能性三段论 : ⌜ ∀ P Q, ◇ P → □ (P → Q) → ◇ Q ⌝.
 Proof. firstorder. Qed.
 
 Fact 必然则不可非 : ⌜ ∀ P, □ P → ¬ ◇ ¬ P ⌝.

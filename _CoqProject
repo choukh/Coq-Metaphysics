@@ -2,6 +2,7 @@
 
 Logic/Classical.v
 Logic/Modal.v
+Logic/Entity.v
 
-GodelGod/Entity.v
 GodelGod/GodelOriginal.v
+GodelGod/Scott.v

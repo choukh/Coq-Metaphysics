@@ -24,7 +24,7 @@ Proof.
   apply H. now apply 爆炸原理.
 Qed.
 
-(* 神是具有所有积极性质的实体 *)
+(* x具有神性，当且仅当任意积极性质都被x所具有 *)
 Definition 神性 : 性质 := λ x, ∀ P, 积极 P → P x.
 
 Axiom 神性积极 : ⌜ 积极 神性 ⌝.
@@ -39,7 +39,22 @@ Proof.
   now apply HG in H.
 Qed.
 
-(* 实体的本性是严格蕴含该实体任意性质的性质 *)
+Section 唯一性证明.
+
+Theorem 神唯一 : ⌜ ∀ x y, 神性 x → 神性 y → x = y ⌝.
+Proof.
+  投射. intros a b Ha Hb.
+  set (λ x, x = a) as 同一性.
+  assert (积极 同一性 w). now apply (神之任意性质积极 w a).
+  now apply Hb in H.
+Qed.
+
+Theorem 必然神唯一 : ⌜ □ ∀ x y, 神性 x → 神性 y → x = y ⌝.
+Proof. apply 必然性规则. apply 神唯一. Qed.
+
+End 唯一性证明.
+
+(* P是x的本性，当且仅当x的任意性质都是P的必然后果 *)
 Definition 本性 : 实体 → 性质 → 命题 :=
   λ x P, ∀ Q, Q x → P ⇒ Q.
 
@@ -53,7 +68,7 @@ Proof.
   apply (𝗞 w) in H. apply H. now apply 积极性质必然积极.
 Qed.
 
-(* 实体实在，当且仅当该实体的任意本性必然存在实例 *)
+(* 实体实在，当且仅当该实体的任意本性都必然存在实例 *)
 Definition 实在性 : 性质 := λ x, ∀ P, 本性 x P → □ ∃ x, P x.
 
 Axiom 实在性积极 : ⌜ 积极 实在性 ⌝.
@@ -73,14 +88,20 @@ Import Modal.KB4.
 Lemma 可能存在神则必然存在神 : ⌜ 一致 神性 → □ ∃ x, 神性 x ⌝.
 Proof.
   投射. intros H. apply 𝗕𝟰.
-  eapply 可能三段论. apply H.
+  eapply 可能性三段论. apply H.
   必入. apply 存在神则必然存在神.
 Qed.
 
 Theorem 必然存在神 : ⌜ □ ∃ x, 神性 x ⌝.
 Proof. 投射. apply 可能存在神则必然存在神. apply 可能存在神. Qed.
 
-Import Modal.KT.
+Lemma 实在性一致 : ⌜ 一致 实在性 ⌝.
+Proof. 投射. apply 积极性质一致. apply 实在性积极. Qed.
 
-Corollary 存在神 : ⌜ ∃ x, 神性 x ⌝.
-Proof. 投射. apply 𝗧. apply 必然存在神. Qed.
+Theorem 公理不一致 : False.
+Proof.
+  destruct 存在世界 as [w].
+  cut ⌜ ◇ □ ∃ x, 恒假 x ⌝. firstorder using 𝗕化简.
+  投射. eapply 可能性三段论. apply 实在性一致.
+  apply 必然性规则. 投射. intros []. apply H. firstorder.
+Qed.

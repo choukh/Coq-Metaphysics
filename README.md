@@ -2,8 +2,7 @@
 
 ## 逻辑 (Logic/)
 - 经典逻辑 (Classical.v)
-  - 排中律
-  - 反证法
+  - 排中律，反证法
 - 模态逻辑 (Modal.v)
   - 可能世界语义高阶模态逻辑
   - 正规模态逻辑层级系统
@@ -13,11 +12,12 @@
 
 ## 哥德尔本体论证明 (GodelGod/)
 - 哥德尔原始版本 (GodelOriginal.v)
-  - TODO
-- 斯科特版 (Scott.v)
-  - TODO
-- 安德森版 (Anderson.v)
-  - TODO
+  - 公理不一致
+- 斯科特版本 (Scott.v)
+  - 修正了哥德尔原始版本中公理不一致的问题
+  - 模态坍缩
+- 安德森版本 (Anderson.v)
+  - 修正了斯科特版本中模态坍缩的问题
 
 ## 参考
 - Some emendations of Godel’s ontological proof. C.A. Anderson. Faith and Philosophy, 7(3), 1990.
