@@ -55,12 +55,12 @@ Proof. apply 必然性规则. apply 神唯一. Qed.
 End 唯一性证明.
 
 (* P是x的本性，当且仅当x的任意性质都是P的必然后果 *)
-Definition 本性 : 实体 → 性质 → 命题 :=
-  λ x P, ∀ Q, Q x → P ⇒ Q.
+Definition 本性 : 性质 → 实体 → 命题 :=
+  λ P x, ∀ Q, Q x → P ⇒ Q.
 
 Axiom 积极性质必然积极 : ⌜ ∀ P, 积极 P → □ 积极 P ⌝.
 
-Theorem 神性是神之本性 : ⌜ ∀ x, 神性 x → 本性 x 神性 ⌝.
+Theorem 神性是神之本性 : ⌜ ∀ x, 神性 x → 本性 神性 x ⌝.
 Proof.
   投射. intros x HG Q HQ.
   apply 神之任意性质积极 in HQ; auto.
@@ -69,7 +69,7 @@ Proof.
 Qed.
 
 (* 实体实在，当且仅当该实体的任意本性都必然存在实例 *)
-Definition 实在性 : 性质 := λ x, ∀ P, 本性 x P → □ ∃ x, P x.
+Definition 实在性 : 性质 := λ x, ∀ P, 本性 P x → □ ∃ x, P x.
 
 Axiom 实在性积极 : ⌜ 积极 实在性 ⌝.
 
