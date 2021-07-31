@@ -1,0 +1,7 @@
+-R . CM
+
+Logic/Classical.v
+Logic/Modal.v
+
+GodelGod/Entity.v
+GodelGod/GodelOriginal.v
