@@ -11,7 +11,7 @@ Axiom 积极的否定消极 : ⌜ ∀ P, 积极 P ↔ 消极 (非 P) ⌝.
 
 Axiom 积极的必然后果也积极 : ⌜ ∀ P Q : 性质, 积极 P → (P ⇒ Q) → 积极 Q ⌝.
 
-Theorem 积极性质一致 : ⌜ ∀ P, 积极 P → 一致 P ⌝.
+Theorem 积极性质可能存在实例 : ⌜ ∀ P, 积极 P → 一致 P ⌝.
 Proof.
   投射. intros P H.
   assert (恒真积极: 积极 恒真 w). {
@@ -30,7 +30,7 @@ Definition 神性 : 性质 := λ x, ∀ P, 积极 P → P x.
 Axiom 神性积极 : ⌜ 积极 神性 ⌝.
 
 Theorem 可能存在神 : ⌜ 一致 神性 ⌝.
-Proof. 投射. apply 积极性质一致. apply 神性积极. Qed.
+Proof. 投射. apply 积极性质可能存在实例. apply 神性积极. Qed.
 
 Lemma 神之任意性质积极 : ⌜ ∀ x P, 神性 x → P x → 积极 P ⌝.
 Proof.
@@ -95,13 +95,13 @@ Qed.
 Theorem 必然存在神 : ⌜ □ ∃ x, 神性 x ⌝.
 Proof. 投射. apply 可能存在神则必然存在神. apply 可能存在神. Qed.
 
-Lemma 实在性一致 : ⌜ 一致 实在性 ⌝.
-Proof. 投射. apply 积极性质一致. apply 实在性积极. Qed.
+Lemma 实在性可能存在实例 : ⌜ 一致 实在性 ⌝.
+Proof. 投射. apply 积极性质可能存在实例. apply 实在性积极. Qed.
 
 Theorem 公理不一致 : False.
 Proof.
   destruct 存在世界 as [w].
   cut ⌜ ◇ □ ∃ x, 恒假 x ⌝. firstorder using 𝗕化简.
-  投射. eapply 可能性三段论. apply 实在性一致.
+  投射. eapply 可能性三段论. apply 实在性可能存在实例.
   apply 必然性规则. 投射. intros []. apply H. firstorder.
 Qed.

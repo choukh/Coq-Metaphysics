@@ -15,9 +15,9 @@
   - 公理不一致
 - 斯科特版本 (Scott.v)
   - 修正了哥德尔原始版本中公理不一致的问题
-  - 模态坍缩
+  - 模态崩塌 (modal collapse)
 - 安德森版本 (Anderson.v)
-  - 修正了斯科特版本中模态坍缩的问题
+  - 修正了斯科特版本中模态崩塌的问题
 
 ## 参考
 - Some emendations of Godel’s ontological proof. C.A. Anderson. Faith and Philosophy, 7(3), 1990.
