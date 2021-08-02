@@ -28,5 +28,9 @@ Proof. firstorder. Qed.
 Definition 严格蕴含 : 性质 → 性质 → 命题 := λ P Q, □ (∀ x, P x → Q x).
 Infix "⇒" := 严格蕴含 (at level 190).
 
+(* P与Q严格等价，当且仅当必然对任意实体x，x具有P等价于x具有Q *)
+Definition 严格等价 : 性质 → 性质 → 命题 := λ P Q, □ (∀ x, P x ↔ Q x).
+Infix "⇔" := 严格等价 (at level 180).
+
 Theorem 爆炸原理 : ⌜ ∀ P Q, ¬ 一致 P → P ⇒ Q ⌝.
 Proof. firstorder. Qed.

@@ -32,7 +32,7 @@ Axiom 神性积极 : ⌜ 积极 神性 ⌝.
 Theorem 可能存在神 : ⌜ 一致 神性 ⌝.
 Proof. 投射. apply 积极性质可能存在实例. apply 神性积极. Qed.
 
-Lemma 神之任意性质积极 : ⌜ ∀ x P, 神性 x → P x → 积极 P ⌝.
+Lemma 神的任意性质积极 : ⌜ ∀ x P, 神性 x → P x → 积极 P ⌝.
 Proof.
   投射. intros x P HG HP. 反证.
   assert (积极 (非 P) w). firstorder using 积极的否定消极.
@@ -45,7 +45,7 @@ Theorem 神唯一 : ⌜ ∀ x y, 神性 x → 神性 y → x = y ⌝.
 Proof.
   投射. intros a b Ha Hb.
   set (λ x, x = a) as 同一性.
-  assert (积极 同一性 w). now apply (神之任意性质积极 w a).
+  assert (积极 同一性 w). now apply (神的任意性质积极 w a).
   now apply Hb in H.
 Qed.
 
@@ -63,7 +63,7 @@ Axiom 积极性质必然积极 : ⌜ ∀ P, 积极 P → □ 积极 P ⌝.
 Theorem 神性是神之本性 : ⌜ ∀ x, 神性 x → 本性 神性 x ⌝.
 Proof.
   投射. intros x HG Q HQ.
-  apply 神之任意性质积极 in HQ; auto.
+  apply 神的任意性质积极 in HQ; auto.
   assert ⌜ □ (积极 Q → ∀ x, 神性 x → Q x) ⌝. firstorder.
   apply (𝗞 w) in H. apply H. now apply 积极性质必然积极.
 Qed.
@@ -95,13 +95,22 @@ Qed.
 Theorem 必然存在神 : ⌜ □ ∃ x, 神性 x ⌝.
 Proof. 投射. apply 可能存在神则必然存在神. apply 可能存在神. Qed.
 
+Import Modal.KT.
+
+Theorem 存在神 : ⌜ ∃ x, 神性 x ⌝.
+Proof. 投射. apply 𝗧. apply 必然存在神. Qed.
+
+Section 反驳.
+
 Lemma 实在性可能存在实例 : ⌜ 一致 实在性 ⌝.
 Proof. 投射. apply 积极性质可能存在实例. apply 实在性积极. Qed.
 
-Theorem 公理不一致 : False.
+Fact 公理不一致 : False.
 Proof.
   destruct 存在世界 as [w].
   cut ⌜ ◇ □ ∃ x, 恒假 x ⌝. firstorder using 𝗕化简.
   投射. eapply 可能性三段论. apply 实在性可能存在实例.
   apply 必然性规则. 投射. intros []. apply H. firstorder.
 Qed.
+
+End 反驳.
