@@ -20,6 +20,6 @@
   - 修正了斯科特版本中模态坍塌的问题
 
 ## 参考
-- Gödel's ontological proof. Jordan Howard Sobel. On Being and Saying: Essays for Richard Cartwright, 241–261, 1987.
-- Some emendations of Godel’s ontological proof. C.A. Anderson. Faith and Philosophy, 7(3), 1990.
-- Interacting with modal logics in the coq proof assistant. C Benzmüller, BW Paleo. International Computer Science Symposium in Russia, 398-411, 2015.
+- Jordan Howard Sobel. Gödel's ontological proof. On Being and Saying: Essays for Richard Cartwright, 1987: 241–261.
+- C.A. Anderson. Some emendations of Godel’s ontological proof. Faith and Philosophy, 1990, 7(3).
+- C Benzmüller, BW Paleo. Interacting with modal logics in the coq proof assistant. International Computer Science Symposium in Russia, 2015: 398-411.
