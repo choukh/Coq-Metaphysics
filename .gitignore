@@ -2,6 +2,8 @@
 *.v.d
 *.report
 *.vo
+*.vos
+*.vok
 *.aux
 *.cmx
 *.glob
