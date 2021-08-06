@@ -55,8 +55,11 @@ Notation "◇ P" := (可能 P) (at level 75, right associativity).
 
 Ltac 可入 w := (exists w; split; [try assumption | idtac]).
 
-Ltac 可除 H := let w := fresh "w" in let R := fresh "R" in
+Ltac 预可除 H := let w := fresh "w" in let R := fresh "R" in
   (destruct H as [w [R H]]; move w at top; move R at top).
+
+Tactic Notation "可除" ident(H) := 预可除 H.
+Tactic Notation "可除" ident(H) "as" simple_intropattern(L) := 预可除 H; destruct H as L.
 
 Theorem 必然性规则 : ∀ P, ⌈P⌋ → ⌈□ P⌋.
 Proof. firstorder. Qed.

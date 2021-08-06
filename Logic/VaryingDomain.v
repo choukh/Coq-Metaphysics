@@ -7,7 +7,7 @@ Parameter 在场 : 实体 → 世界 → Prop.
 Notation "x ∈ w" := (  在场 x w) (at level 70).
 Notation "x ∉ w" := (¬ 在场 x w) (at level 70).
 
-Axiom 论域非空 : ∀ w, ∃ x, x ∈ w.
+Axiom 全局论域非空 : ∀ w, ∃ x, x ∈ w.
 
 Definition 在场全称量词 : 泛性质 性质 :=
   λ Φ w, (∀ x, x ∈ w → Φ x w)%t.

@@ -8,7 +8,8 @@ Import Modal.S5.
 Parameter 积极 : 泛性质 性质.
 Definition 消极 := λ Φ, ¬ 积极 Φ.
 
-Axiom 积极的否定消极 : ⌈∀ Φ, 积极 Φ ↔ 消极 (反 Φ)⌋.
+Axiom 积极的否定消极 : ⌈∀ Φ, 积极 Φ → 消极 (反 Φ)⌋.
+Axiom 消极的否定积极 : ⌈∀ Φ, 消极 Φ → 积极 (反 Φ)⌋.
 
 Axiom 积极的必然后果也积极 : ⌈∀ Φ Ψ : 性质, 积极 Φ → (Φ ⇒ Ψ) → 积极 Ψ⌋.
 
@@ -31,7 +32,7 @@ Proof. 证明. apply 积极性质可能存在实例. apply 神性积极. Qed.
 Lemma 神的任意性质积极 : ⌈∀ x Φ, 神性 x → Φ x → 积极 Φ⌋.
 Proof.
   证明. intros g Φ HG HΦ. 反证.
-  assert (积极 (反 Φ) w). firstorder using 积极的否定消极.
+  assert (积极 (反 Φ) w). firstorder using 消极的否定积极.
   now apply HG in H.
 Qed.
 
