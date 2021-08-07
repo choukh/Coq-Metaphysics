@@ -1,6 +1,6 @@
 (** Coq coding by choukh, Aug 2021 **)
 
-Require Import CM.Logic.Model.G_Var_S5_ab_a.
+Require Import CM.Logic.Model.Var_S5_ab_a.
 
 Definition 缺陷性 : 性质 := λ x, x = b.
 

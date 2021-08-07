@@ -16,16 +16,17 @@
 - 可变论域 (VaryingDomain.v)
   - 可变论域量词
 - 模型 (Model)
-  - 全局_可变论域_S5模型 (G_Var_S5_ab_a.v)
+  - 可变论域_S5模型 (Var_S5_ab_a.v)
 
 ## 哥德尔本体论证明 (GodelGod)
 - 哥德尔版：原始版本 (Godel)
-  - 公理不一致（全局_固定论域_K系统） (Inconsistency_G_Con_K.v)
+  - 公理不一致（固定论域_K） (Inconsistency_Con_K.v)
+  - 公理不一致（可变论域_K） (Inconsistency_Var_K.v)
 - 斯科特版：消除了公理不一致的问题 (Scott)
-  - 本体论证明与模态坍塌（全局_固定论域_S5系统） (Scott_G_Con_S5.v)
+  - 本体论证明与模态坍塌（固定论域_S5） (Scott_Con_S5.v)
 - 安德森版：消除了模态坍塌的问题 (Anderson)
-  - 本体论证明（全局_固定论域_S5系统） (Anderson_G_Con_S5.v)
-  - 可满足性考察（全局_可变论域_S5模型） (Satisfiability_G_Var_S5_ab_a.v)
+  - 本体论证明（固定论域_S5） (Anderson_Con_S5.v)
+  - 可满足性考察（可变论域_S5模型） (Satisfiability_Var_S5_ab_a.v)
 
 ## 参考
 - Jordan Howard Sobel. Gödel's ontological proof. On Being and Saying: Essays for Richard Cartwright, 1987: 241–261.
