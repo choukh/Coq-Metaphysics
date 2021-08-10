@@ -32,7 +32,7 @@
   - 本体论证明（固定论域_KB） (Hajek_Con_KB.v)
 
 ## 参考
-[1] Jordan Howard Sobel. Gödel's ontological proof. On Being and Saying: Essays for Richard Cartwright, 1987: 241–261.
+[1] Jordan Howard Sobel. Gödel's ontological proof. On Being and Saying: Essays for Richard Cartwright, 1987: 241–261.  
 [2] C.A. Anderson. Some emendations of Godel’s ontological proof. Faith and Philosophy, 1990, 7(3).  
 [3] Petr Hájek. Magari and others on Gödel’s ontological proof. 
 Logic and algebra, 1996: 125–136.  
