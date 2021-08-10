@@ -1,5 +1,9 @@
 (** Coq coding by choukh, July 2021 **)
 
+(* 基于安德森[2]第4节 *)
+(* 消除了斯科特版中模态坍塌的问题 *)
+(* 安德森本人的版本[2]基于S5系统，但最近的研究[5]显示只需更弱的B系统 *)
+
 Require Import CM.Logic.Classical.
 Require Import CM.Logic.Modal.
 Require Import CM.Logic.Entity.
@@ -8,10 +12,12 @@ Import Modal.B.
 Parameter 积极 : 泛性质 性质.
 Definition 消极 := λ Φ, ¬ 积极 Φ.
 
+(* 参看[2]中第3节对公理(1b)的讨论 *)
 Axiom 积极的否定消极 : ⌈∀ Φ, 积极 Φ → 消极 (反 Φ)⌋.
 
 Axiom 积极的必然后果也积极 : ⌈∀ Φ Ψ : 性质, 积极 Φ → (Φ ⇒ Ψ) → 积极 Ψ⌋.
 
+(* 基于[5]第5节的改进证法，安德森在[2]的注释2中也提到了类似改进 *)
 Theorem 积极性质可能存在实例 : ⌈∀ Φ, 积极 Φ → 一致 Φ⌋.
 Proof.
   证明. intros Φ H. 反证.
@@ -47,7 +53,7 @@ End 一神论.
 Definition 本性 : 性质 → 实体 → 命题 :=
   λ Φ x, ∀ Ψ, □ Ψ x ↔ Φ ⇒ Ψ.
 
-Module 对本性定义的辩护.
+Module 对本性定义的辩护. (* 基于[2]中注释10 *)
 
 Fact 本性是必然被单一实体所必然具有的特性 :
   ∀ Φ x, ⌈本性 Φ x⌋ ↔ ⌈□ Φ x ∧ □ ∀ y, Φ y → x = y⌋.
@@ -92,6 +98,8 @@ Proof.
   apply (神具有实在性 w g HG).
   now apply 神性是神之本性.
 Qed.
+
+(* 以下基于最近的研究[5]做了改进，而与安德森本人的版本[2]不同 *)
 
 Lemma 可能必然存在神 : ⌈◇ □ ∃ x, 神性 x⌋.
 Proof.

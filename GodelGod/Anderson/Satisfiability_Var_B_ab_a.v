@@ -1,5 +1,7 @@
 (** Coq coding by choukh, Aug 2021 **)
 
+(* 基于安德森[2]第4节对可满足性的讨论 *)
+
 Require Import CM.Logic.Classical.
 Require Import CM.Logic.Model.Var_B_ab_a.
 

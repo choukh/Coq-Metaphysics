@@ -1,5 +1,7 @@
 (** Coq coding by choukh, July 2021 **)
 
+(* 哥德尔本体论公理在固定论域K系统中不一致 *)
+
 Require Import CM.Logic.Classical.
 Require Import CM.Logic.Modal.
 Require Import CM.Logic.Entity.

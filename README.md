@@ -28,10 +28,14 @@
 - 安德森版：消除了模态坍塌的问题 (Anderson)
   - 本体论证明（固定论域_B） (Anderson_Con_B.v)
   - 可满足性考察（可变论域_B模型） (Satisfiability_Var_B_ab_a.v)
+- 哈耶克版：在安德森版的基础上做了一些改进 (Hajek)
+  - 本体论证明（固定论域_KB） (Hajek_Con_KB.v)
 
 ## 参考
-- Jordan Howard Sobel. Gödel's ontological proof. On Being and Saying: Essays for Richard Cartwright, 1987: 241–261.
-- C.A. Anderson. Some emendations of Godel’s ontological proof. Faith and Philosophy, 1990, 7(3).
-- C Benzmüller, BW Paleo. Interacting with modal logics in the coq proof assistant. International Computer Science Symposium in Russia, 2015: 398-411.
-- Annika Kanckos, BW Paleo. Variants of Gödel's Ontological Proof in a Natural Deduction Calculus. Studia Logica, 2016: 105(3)
-- C Benzmüller, L. Weber and BW Paleo. Computer-Assisted Analysis of the Anderson–Hájek Ontological Controversy, Logica Universalis, 2017, 11(1)
+[1] Jordan Howard Sobel. Gödel's ontological proof. On Being and Saying: Essays for Richard Cartwright, 1987: 241–261.
+[2] C.A. Anderson. Some emendations of Godel’s ontological proof. Faith and Philosophy, 1990, 7(3).  
+[3] Petr Hájek. Magari and others on Gödel’s ontological proof. 
+Logic and algebra, 1996: 125–136.  
+[4] C Benzmüller, BW Paleo. Interacting with modal logics in the coq proof assistant. International Computer Science Symposium in Russia, 2015: 398-411.  
+[5] Annika Kanckos, BW Paleo. Variants of Gödel's Ontological Proof in a Natural Deduction Calculus. Studia Logica, 2016: 105(3).  
+[6] C Benzmüller, L. Weber and BW Paleo. Computer-Assisted Analysis of the Anderson–Hájek Ontological Controversy, Logica Universalis, 2017, 11(1).
