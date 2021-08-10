@@ -12,17 +12,22 @@ Open Scope modal_scope.
 Inductive 世界 : Type := | w₁ | w₂.
 Inductive 实体 : Type := | a | b.
 
-Parameter 在场 : 实体 → 世界 → Prop.
+Inductive 在场 : 实体 → 世界 → Prop :=
+  | a₁ : 在场 a w₁
+  | b₁ : 在场 b w₁
+  | a₂ : 在场 a w₂.
+
 Notation "x ∈ w" := (  在场 x w) (at level 70).
 Notation "x ∉ w" := (¬ 在场 x w) (at level 70).
 
-Axiom a在w₁ : a ∈ w₁.
-Axiom b在w₁ : b ∈ w₁.
-Axiom a在w₂ : a ∈ w₂.
-Axiom b不在w₂ : b ∉ w₂.
+Reserved Notation "u '𝗥' v" (at level 70).
 
-Parameter 可及关系 : 世界 → 世界 → Prop.
-Infix "𝗥" := 可及关系 (at level 70) : modal_scope.
+Inductive 可及关系 : 世界 → 世界 → Prop :=
+  | 自反1 : w₁ 𝗥 w₁
+  | 自反2 : w₂ 𝗥 w₂
+  | 对称1 : w₁ 𝗥 w₂
+  | 对称2 : w₂ 𝗥 w₁
+where "u '𝗥' v" := (可及关系 u v) : modal_scope.
 
 Definition 命题 := 世界 → Prop.
 Definition 泛性质 (A : Type) := A → 命题.
@@ -128,34 +133,44 @@ Theorem 分配律公理 : ⌈∀ P Q, □ (P → Q) → (□ P → □ Q)⌋.
 Proof. firstorder. Qed.
 Notation 𝗞 := 分配律公理.
 
-Axiom S5框架 : Equivalence 可及关系.
+Theorem 可能性分配原理 : ⌈∀ P Q, □ (P → Q) → (◇ P → ◇ Q)⌋.
+Proof. firstorder. Qed.
+Notation 𝗞' := 可能性分配原理.
 
 Theorem 𝗧 : ⌈∀ P, □ P → P⌋.
-Proof. firstorder using S5框架. Qed.
+Proof.
+  证明. intros P H.
+  destruct w; 必除 H H'; auto; constructor.
+Qed.
 
 Theorem 𝗗 : ⌈∀ P, □ P → ◇ P⌋.
-Proof. firstorder using S5框架. Qed.
+Proof.
+  证明. intros P H.
+  destruct w; 必除 H H'; try constructor;
+  [可入 w₁|可入 w₂]; auto; constructor.
+Qed.
 
 Theorem 𝗕 : ⌈∀ P, P → □ ◇ P⌋.
-Proof. firstorder using S5框架. Qed.
+Proof.
+  证明. intros P H. 必入.
+  destruct w; destruct w0.
+  - 可入 w₁; auto.
+  - 可入 w₁; auto. constructor.
+  - 可入 w₂; auto. constructor.
+  - 可入 w₂; auto.
+Qed.
 
-Theorem 𝗕化简 : ⌈∀ P, ◇ □ P → P⌋.
-Proof. firstorder using S5框架. Qed.
-
-Theorem 四 : ⌈∀ P, □ P → □ □ P⌋.
-Proof. firstorder using S5框架. Qed.
-Notation "𝟰" := 四.
-
-Theorem 𝗕𝟰 : ⌈∀ P, ◇ □ P → □ P⌋.
-Proof. firstorder using S5框架. Qed.
-
-Theorem 五 : ⌈∀ P, ◇ P → □ ◇ P⌋.
-Proof. firstorder using S5框架. Qed.
-Notation "𝟱" := 五.
+Theorem 布劳威尔归结 : ⌈∀ P, ◇ □ P → P⌋.
+Proof.
+  证明. intros P H. 可除 H.
+  destruct w; destruct w0;
+  apply H; constructor.
+Qed.
+Notation 𝗕归结 := 布劳威尔归结.
 
 Definition 性质 := 泛性质 实体.
 Definition 反性质 : 性质 → 性质 := λ Φ x, ¬ Φ x.
-Notation "'反' P" := (反性质 P) (at level 75) : modal_scope.
+Notation "'反' P" := (反性质 P) (at level 65, right associativity) : modal_scope.
 
 Definition 同一性 : 性质 := λ x, x = x.
 Definition 反同一性 : 性质 := 反 同一性.

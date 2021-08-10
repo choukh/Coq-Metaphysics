@@ -6,7 +6,7 @@ Parameter 实体 : Type.
 Definition 性质 := 泛性质 实体.
 
 Definition 反性质 : 性质 → 性质 := λ Φ x, ¬ Φ x.
-Notation "'反' P" := (反性质 P) (at level 75) : modal_scope.
+Notation "'反' P" := (反性质 P) (at level 65, right associativity) : modal_scope.
 
 Definition 同一性 : 性质 := λ x, x = x.
 Definition 反同一性 : 性质 := 反 同一性.

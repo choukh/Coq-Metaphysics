@@ -170,6 +170,10 @@ Module Export K.
   Theorem 分配律公理 : ⌈∀ P Q, □ (P → Q) → (□ P → □ Q)⌋.
   Proof. firstorder. Qed.
   Notation 𝗞 := 分配律公理.
+
+  Theorem 可能性分配原理 : ⌈∀ P Q, □ (P → Q) → (◇ P → ◇ Q)⌋.
+  Proof. firstorder. Qed.
+  Notation 𝗞' := 可能性分配原理.
 End K.
 
 Module KT.
@@ -188,8 +192,9 @@ Module KB.
   Theorem 𝗕 : ⌈∀ P, P → □ ◇ P⌋.
   Proof. firstorder using 对称框架. Qed.
 
-  Theorem 𝗕化简 : ⌈∀ P, ◇ □ P → P⌋.
+  Theorem 布劳威尔归结 : ⌈∀ P, ◇ □ P → P⌋.
   Proof. firstorder using 对称框架. Qed.
+  Notation 𝗕归结 := 布劳威尔归结.
 End KB.
 
 Module K4.
@@ -200,16 +205,22 @@ Module K4.
   Notation "𝟰" := 四.
 End K4.
 
-Module KB4.
+Module B.
+  Export KT.
   Export KB.
+End B.
+
+Module K4B.
   Export K4.
+  Export KB.
 
   Fact 部分等价关系框架 : PER 可及关系.
   Proof. firstorder using 对称框架, 传递框架. Qed.
 
-  Theorem 𝗕𝟰 : ⌈∀ P, ◇ □ P → □ P⌋.
+  Theorem 迭代原理 : ⌈∀ P, ◇ □ P → □ P⌋.
   Proof. firstorder using 部分等价关系框架. Qed.
-End KB4.
+  Notation "𝟰𝗕" := 迭代原理.
+End K4B.
 
 Module S4.
   Export KT.
@@ -221,7 +232,7 @@ End S4.
 
 Module S5.
   Export KB.
-  Export KB4.
+  Export K4B.
   Export S4.
 
   Fact 等价关系框架 : Equivalence 可及关系.

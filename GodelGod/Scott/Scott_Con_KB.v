@@ -3,7 +3,6 @@
 Require Import CM.Logic.Classical.
 Require Import CM.Logic.Modal.
 Require Import CM.Logic.Entity.
-Import Modal.S5.
 
 Parameter 积极 : 泛性质 性质.
 Definition 消极 := λ Φ, ¬ 积极 Φ.
@@ -36,7 +35,7 @@ Proof.
   now apply HG in H.
 Qed.
 
-Module 唯一性证明.
+Module 一神论.
 
 Theorem 神唯一 : ⌈∀ x y, 神性 x → 神性 y → x = y⌋.
 Proof.
@@ -49,7 +48,7 @@ Qed.
 Theorem 必然神唯一 : ⌈□ ∀ x y, 神性 x → 神性 y → x = y⌋.
 Proof. apply 𝗡. apply 神唯一. Qed.
 
-End 唯一性证明.
+End 一神论.
 
 (* P是x的本性，当且仅当P是x的性质且x的任意性质都是P的必然后果 *)
 Definition 本性 : 性质 → 实体 → 命题 :=
@@ -80,9 +79,12 @@ Proof.
   now apply 神性是神之本性.
 Qed.
 
+Module 原始版.
+Import Modal.S5.
+
 Lemma 可能存在神则必然存在神 : ⌈一致 神性 → □ ∃ x, 神性 x⌋.
 Proof.
-  证明. intros H. apply 𝗕𝟰.
+  证明. intros H. apply 𝟰𝗕.
   eapply 可能性三段论. apply H.
   必入. apply 存在神则必然存在神.
 Qed.
@@ -92,6 +94,25 @@ Proof. 证明. apply 可能存在神则必然存在神. apply 可能存在神. Q
 
 Theorem 存在神 : ⌈∃ x, 神性 x⌋.
 Proof. 证明. apply 𝗧. apply 必然存在神. Qed.
+
+End 原始版.
+
+Module Import 改进版.
+Import Modal.KB.
+
+Lemma 可能必然存在神 : ⌈◇ □ ∃ x, 神性 x⌋.
+Proof.
+  证明. eapply 𝗞'; [|apply 可能存在神].
+  apply 𝗡. apply 存在神则必然存在神.
+Qed.
+
+Theorem 存在神 : ⌈∃ x, 神性 x⌋.
+Proof. 证明. apply 𝗕归结. apply 可能必然存在神. Qed.
+
+Theorem 必然存在神 : ⌈□ ∃ x, 神性 x⌋.
+Proof. apply 𝗡. apply 存在神. Qed.
+
+End 改进版.
 
 Module 反驳1.
 
