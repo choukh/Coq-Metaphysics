@@ -129,13 +129,13 @@ Theorem 必然性规则 : ∀ P, ⌈P⌋ → ⌈□ P⌋.
 Proof. firstorder. Qed.
 Notation 𝗡 := 必然性规则.
 
-Theorem 分配律公理 : ⌈∀ P Q, □ (P → Q) → (□ P → □ Q)⌋.
+Theorem 必然性分配律 : ⌈∀ P Q, □ (P → Q) → (□ P → □ Q)⌋.
 Proof. firstorder. Qed.
-Notation 𝗞 := 分配律公理.
+Notation 𝗞 := 必然性分配律.
 
-Theorem 可能性分配原理 : ⌈∀ P Q, □ (P → Q) → (◇ P → ◇ Q)⌋.
+Theorem 可能性分配律 : ⌈∀ P Q, □ (P → Q) → (◇ P → ◇ Q)⌋.
 Proof. firstorder. Qed.
-Notation 𝗞' := 可能性分配原理.
+Notation 𝗞' := 可能性分配律.
 
 Theorem 𝗧 : ⌈∀ P, □ P → P⌋.
 Proof.

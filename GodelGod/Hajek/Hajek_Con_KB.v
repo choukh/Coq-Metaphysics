@@ -1,8 +1,8 @@
 (** Coq coding by choukh, Aug 2021 **)
 
-(* 基于近期研究[7] *)
+(* 基于近期研究[6] *)
 (* 在安德森[2]的基础上删除了多余的公理4和5 *)
-(* 确认了哈耶克[3]关于安德森公理可简化主张的正确性 *)
+(* 验证了哈耶克[3]关于安德森公理可简化主张的正确性 *)
 
 Require Import CM.Logic.Classical.
 Require Import CM.Logic.Modal.
@@ -41,7 +41,7 @@ Qed.
 
 Lemma 可能必然存在神 : ⌈◇ □ ∃ x, 神性 x⌋.
 Proof.
-  证明. eapply 𝗞'; [|apply 可能存在神].
+  证明. eapply 可能性三段论. apply 可能存在神.
   apply 𝗡. apply 存在神则必然存在神.
 Qed.
 
@@ -50,3 +50,19 @@ Proof. 证明. apply 𝗕归结. apply 可能必然存在神. Qed.
 
 Theorem 必然存在神 : ⌈□ ∃ x, 神性 x⌋.
 Proof. apply 𝗡. apply 存在神. Qed.
+
+Module 一神论.
+Import Modal.B.
+
+Theorem 神唯一 : ⌈∀ x y, 神性 x → 神性 y → x = y⌋.
+Proof.
+  证明. intros a b Ha Hb.
+  set (λ x, x = b) as Φ.
+  assert (积极 Φ w). apply Hb. firstorder.
+  apply Ha in H. now apply 𝗧 in H.
+Qed.
+
+Theorem 必然神唯一 : ⌈□ ∀ x y, 神性 x → 神性 y → x = y⌋.
+Proof. apply 𝗡. apply 神唯一. Qed.
+
+End 一神论.

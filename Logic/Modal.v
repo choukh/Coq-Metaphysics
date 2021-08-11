@@ -126,9 +126,6 @@ Fact 存在量词嵌入 {A : Type} : ∀ Φ : 泛性质 A,
   (∃ x, ⌈Φ x⌋) → ⌈∃ x, Φ x⌋.
 Proof. firstorder. Qed.
 
-Theorem 可能性三段论 : ⌈∀ P Q, ◇ P → □ (P → Q) → ◇ Q⌋.
-Proof. firstorder. Qed.
-
 Fact 必然则不可非 : ⌈∀ P, □ P → ¬ ◇ ¬ P⌋.
 Proof. firstorder. Qed.
 
@@ -167,13 +164,21 @@ End Classical.
 (** 框架条件与层级系统 **)
 
 Module Export K.
-  Theorem 分配律公理 : ⌈∀ P Q, □ (P → Q) → (□ P → □ Q)⌋.
+  (* 无框架条件 *)
+  
+  Theorem 必然性分配律 : ⌈∀ P Q, □ (P → Q) → (□ P → □ Q)⌋.
   Proof. firstorder. Qed.
-  Notation 𝗞 := 分配律公理.
+  Notation 𝗞 := 必然性分配律.
 
-  Theorem 可能性分配原理 : ⌈∀ P Q, □ (P → Q) → (◇ P → ◇ Q)⌋.
+  Theorem 可能性分配律 : ⌈∀ P Q, □ (P → Q) → (◇ P → ◇ Q)⌋.
   Proof. firstorder. Qed.
-  Notation 𝗞' := 可能性分配原理.
+  Notation 𝗞' := 可能性分配律.
+
+  Theorem 必然性三段论 : ⌈∀ P Q, □ P → □ (P → Q) → □ Q⌋.
+  Proof. firstorder. Qed.
+
+  Theorem 可能性三段论 : ⌈∀ P Q, ◇ P → □ (P → Q) → ◇ Q⌋.
+  Proof. firstorder. Qed.
 End K.
 
 Module KT.

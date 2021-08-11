@@ -66,8 +66,8 @@ Theorem 神性是神之本性 : ⌈∀ x, 神性 x → 本性 神性 x⌋.
 Proof.
   证明. intros g HG. split. apply HG.
   intros Φ HΦ. apply 神的任意性质积极 in HΦ; auto.
-  assert ⌈□ (积极 Φ → ∀ x, 神性 x → Φ x)⌋. firstorder.
-  apply (𝗞 w) in H. apply H. now apply 积极性质必然积极.
+  eapply 必然性三段论. apply 积极性质必然积极.
+  apply HΦ. firstorder.
 Qed.
 
 (* 实体实在，当且仅当该实体的任意本性都必然存在实例 *)
@@ -108,7 +108,7 @@ Import Modal.KB.
 
 Lemma 可能必然存在神 : ⌈◇ □ ∃ x, 神性 x⌋.
 Proof.
-  证明. eapply 𝗞'; [|apply 可能存在神].
+  证明. eapply 可能性三段论. apply 可能存在神.
   apply 𝗡. apply 存在神则必然存在神.
 Qed.
 
@@ -132,7 +132,7 @@ Proof.
   cut ((□ ∃ x, Φ x) w). firstorder.
   destruct (存在神 w) as [g HG].
   pose proof (神的任意性质都是神性的必然后果 w g Φ HG HP).
-  eapply 𝗞; [|apply H]. 必入. intros H'.
+  eapply 必然性三段论. apply H. 必入. intros H'.
   destruct (存在神 w0) as [g' HG'].
   apply H' in HG'. now exists g'.
 Qed.
@@ -144,7 +144,7 @@ Module 反驳2. (* 基于[1] *)
 Fact 积极性质必然存在实例 : ⌈∀ Φ, 积极 Φ → □ ∃ x, Φ x⌋.
 Proof.
   证明. intros Φ H. apply 积极性质必然积极 in H.
-  eapply 𝗞; [|apply 必然存在神]. firstorder.
+  eapply 必然性三段论. apply 必然存在神. firstorder.
 Qed.
 
 Fact 无本性的实体具有实在性 : ⌈∀ x, (∀ Φ, ¬ 本性 Φ x) → 实在性 x⌋.
