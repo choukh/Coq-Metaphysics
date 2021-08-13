@@ -165,18 +165,19 @@ End Classical.
 
 Module Export K.
   (* 无框架条件 *)
-
+  
   Theorem 必然性分配律 : ⌈∀ P Q, □ (P → Q) → (□ P → □ Q)⌋.
   Proof. firstorder. Qed.
   Notation 𝗞 := 必然性分配律.
 
+  Theorem 可能性分配律 : ⌈∀ P Q, □ (P → Q) → (◇ P → ◇ Q)⌋.
+  Proof. firstorder. Qed.
+  Notation 𝗞' := 可能性分配律.
+
   Theorem 必然性三段论 : ⌈∀ P Q, □ P → □ (P → Q) → □ Q⌋.
   Proof. firstorder. Qed.
 
-  Theorem 可能性三段论1 : ⌈∀ P Q, ◇ P → □ (P → Q) → ◇ Q⌋.
-  Proof. firstorder. Qed.
-
-  Theorem 可能性三段论2 : ⌈∀ P Q, □ P → ◇ (P → Q) → ◇ Q⌋.
+  Theorem 可能性三段论 : ⌈∀ P Q, ◇ P → □ (P → Q) → ◇ Q⌋.
   Proof. firstorder. Qed.
 End K.
 
@@ -199,20 +200,6 @@ Module KB.
   Theorem 布劳威尔归结 : ⌈∀ P, ◇ □ P → P⌋.
   Proof. firstorder using 对称框架. Qed.
   Notation 𝗕归结 := 布劳威尔归结.
-
-  Theorem 必然性蕴含式推理 : ⌈∀ P Q, (P → □ Q) → □ (□ P → Q)⌋.
-  Proof.
-    证明. intros P Q H. apply 𝗕 in H.
-    eapply 必然性三段论. apply H.
-    apply 𝗡. 证明. intros H1 H2.
-    apply 𝗕归结. eapply 可能性三段论2. apply H2. apply H1.
-  Qed.
-
-  Theorem 必然性三合一 : ⌈∀ P, □ □ □ P → □ P⌋.
-  Proof.
-    证明. intros P H. apply (𝗞 w (□ □ P)). apply 必然性蕴含式推理.
-    firstorder. auto.
-  Qed.
 End KB.
 
 Module K4.

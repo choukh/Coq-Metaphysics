@@ -101,7 +101,7 @@ Notation "∃ x .. y , Φ" :=
   (at level 200, x binder, y binder, right associativity,
   format "'[ ' '[ ' ∃  x .. y ']' ,  '/' Φ ']'") : modal_scope.
 
-Theorem 可能性三段论1 : ⌈∀ P Q, ◇ P → □ (P → Q) → ◇ Q⌋.
+Theorem 可能性三段论 : ⌈∀ P Q, ◇ P → □ (P → Q) → ◇ Q⌋.
 Proof. firstorder. Qed.
 
 Theorem 必然即不可非 : ⌈∀ P, □ P ↔ ¬ ◇ ¬ P⌋.
@@ -132,6 +132,10 @@ Notation 𝗡 := 必然性规则.
 Theorem 必然性分配律 : ⌈∀ P Q, □ (P → Q) → (□ P → □ Q)⌋.
 Proof. firstorder. Qed.
 Notation 𝗞 := 必然性分配律.
+
+Theorem 可能性分配律 : ⌈∀ P Q, □ (P → Q) → (◇ P → ◇ Q)⌋.
+Proof. firstorder. Qed.
+Notation 𝗞' := 可能性分配律.
 
 Theorem 𝗧 : ⌈∀ P, □ P → P⌋.
 Proof.

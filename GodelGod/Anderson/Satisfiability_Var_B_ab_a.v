@@ -10,7 +10,7 @@ Definition 缺陷性 : 性质 := λ x, x = b.
 Definition 积极 : 泛性质 性质 := λ Φ, 反 Φ ⇒ 缺陷性.
 Definition 消极 := λ Φ, ¬ 积极 Φ.
 
-Theorem 积极的否定消极 : ⌈∀ Φ, 积极 Φ → 消极 (反 Φ)⌋.
+Theorem 积极性质的反面消极 : ⌈∀ Φ, 积极 Φ → 消极 (反 Φ)⌋.
 Proof.
   证明. intros Φ HP HN. destruct w.
   - 排中 ((Φ a) w₁).
